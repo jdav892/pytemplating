@@ -1,16 +1,15 @@
 PLACEHOLDER = "[name]"
-"""Placeholder is simply an example used"""
-with open("path") as names_file:
-    names = names_file.readlines()
-    
-with open("path") as letter_file:
-    letter_contents = letter_file.read()
+"""reading a name file to have list of names"""
+with open(f"path.txt") as name_file:
+    names = name_file.readlines()
+    """reading the letter to know the letter content"""
+with open(f"path.txt") as letter_file:
+    letter_content = letter_file.read()
     for name in names:
-        name_stripped = name.strip()
-        new_letter = letter_contents.replace(PLACEHOLDER, name)
-        print(new_letter)
-        with open(f"path{name_stripped}.text", mode="w") as finished_letter:
-            finished_letter.write(new_letter)
-    
-
-            
+        """stripping white space from the names to add to directory"""
+        stripped_name = name.strip()
+        """replacing placeholder value with names that are iterated through"""
+        new_letter = letter_content.replace(PLACEHOLDER, name)
+        """writing the new letter with the names from the name file"""
+        with open(f"path{stripped_name}.txt", mode="w") as finished_file:
+            finished_file.write(new_letter)
